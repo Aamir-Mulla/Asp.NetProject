@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MvcCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Products" EntityType="MvcCrudModel.Product" />
+    <EntitySet Name="Employees" EntityType="MvcCrudModel.Employee" />
+    <FunctionImport Name="PRC_GETEMPDETAILS" EntitySet="Employees" ReturnType="Collection(MvcCrudModel.Employee)" />
+    <FunctionImport Name="PRC_DELETEEMPDETAILS" EntitySet="Employees" ReturnType="Collection(MvcCrudModel.Employee)">
+      <Parameter Name="emp_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PRC_GETEMPBYID" EntitySet="Employees" ReturnType="Collection(MvcCrudModel.Employee)">
+      <Parameter Name="emp_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PRC_INSERTEMPDETAILS" EntitySet="Employees" ReturnType="Collection(MvcCrudModel.Employee)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="position" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PRC_UPDATEEMPDETAILS" EntitySet="Employees" ReturnType="Collection(MvcCrudModel.Employee)">
+      <Parameter Name="emp_id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="position" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Students" EntityType="MvcCrudModel.Student" />
+    <FunctionImport Name="prc_getstudentdetails" EntitySet="Students" ReturnType="Collection(MvcCrudModel.Student)" />
+    <FunctionImport Name="prc_insertstudentdetails" EntitySet="Students" ReturnType="Collection(MvcCrudModel.Student)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="class" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="prc_getstudentbyid" EntitySet="Students" ReturnType="Collection(MvcCrudModel.Student)">
+      <Parameter Name="studentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="product_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="product_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="PRC_GETEMPDETAILS_Result">
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="PRC_GETEMPBYID_Result">
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Position" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="prc_getstudentdetails_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Class" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="prc_getstudentbyid_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Class" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+</Schema>

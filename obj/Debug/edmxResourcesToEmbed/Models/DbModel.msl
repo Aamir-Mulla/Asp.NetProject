@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MvcCrudModelStoreContainer" CdmEntityContainer="DbModels">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MvcCrudModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MvcCrudModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="product_desc" ColumnName="product_desc" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MvcCrudModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PRC_GETEMPDETAILS" FunctionName="MvcCrudModel.Store.PRC_GETEMPDETAILS" />
+    <FunctionImportMapping FunctionImportName="PRC_DELETEEMPDETAILS" FunctionName="MvcCrudModel.Store.PRC_DELETEEMPDETAILS" />
+    <FunctionImportMapping FunctionImportName="PRC_GETEMPBYID" FunctionName="MvcCrudModel.Store.PRC_GETEMPBYID" />
+    <FunctionImportMapping FunctionImportName="PRC_INSERTEMPDETAILS" FunctionName="MvcCrudModel.Store.PRC_INSERTEMPDETAILS" />
+    <FunctionImportMapping FunctionImportName="PRC_UPDATEEMPDETAILS" FunctionName="MvcCrudModel.Store.PRC_UPDATEEMPDETAILS" />
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="MvcCrudModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="prc_getstudentdetails" FunctionName="MvcCrudModel.Store.prc_getstudentdetails" />
+    <FunctionImportMapping FunctionImportName="prc_insertstudentdetails" FunctionName="MvcCrudModel.Store.prc_insertstudentdetails" />
+    <FunctionImportMapping FunctionImportName="prc_getstudentbyid" FunctionName="MvcCrudModel.Store.prc_getstudentbyid" />
+  </EntityContainerMapping>
+</Mapping>
